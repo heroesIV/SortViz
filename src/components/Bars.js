@@ -1,39 +1,33 @@
-import React, { useState } from "react";
-import { Slider } from "@material-ui/core";
+import React, { useContext, useEffect } from "react";
+import { DataContext } from "../DataContext";
 
 export default function Bars() {
-  const [length, setLength] = useState(10);
-  const array = Array.from(Array(length), () =>
-    Math.floor(Math.random() * 500)
-  );
-  //   console.log(array);
+  const [length, setLength, array, setArray] = useContext(DataContext);
+  const makeArray = () => {
+    const newArray = Array.from(Array(length), () =>
+      Math.floor(Math.random() * 400)
+    );
+
+    setArray(newArray);
+  };
+
+  useEffect(() => {
+    makeArray();
+  }, [length]);
+
   return (
     <>
-      <div style={{ width: "30%", margin: "auto" }}>
-        <Slider
-          value={length}
-          onChange={(e, newValue) => {
-            e.preventDefault();
-            setLength(newValue);
-          }}
-          aria-labelledby="continuous-slider"
-          min={2}
-          max={80}
-          valueLabelDisplay="auto"
-        />
-      </div>
-
       <div
-        className="bars"
+        className="array-container"
         style={{
           display: "flex",
           flexDirection: "row",
           justifyContent: "center",
           alignItems: "flex-end",
-          backgroundColor: "lightgray",
-          height: "520px",
+          height: "420px",
           width: "90%",
           margin: "auto",
+          marginTop: "4%",
         }}
       >
         {array.map((height, index) => {
@@ -42,11 +36,11 @@ export default function Bars() {
               key={index}
               className="bar"
               style={{
-                margin: "1px",
-                border: "1px solid black",
+                margin: "2px",
                 width: "20px",
-                height: height,
+                height: `${height}px`,
                 backgroundColor: "turquoise",
+                borderRadius: "20px 20px 0 0",
               }}
             ></div>
           );

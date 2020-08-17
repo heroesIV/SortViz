@@ -1,12 +1,15 @@
 import React from "react";
-import Header from "./components/Header";
+import Nav from "./components/Nav";
 import Bars from "./components/Bars";
+import { DataProvider } from "./DataContext";
 
 function App() {
   return (
     <div>
-      <Header />
-      <Bars />
+      <DataProvider>
+        <Nav />
+        <Bars />
+      </DataProvider>
     </div>
   );
 }
