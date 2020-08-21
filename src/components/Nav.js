@@ -117,9 +117,10 @@ export default function Nav() {
 
     const [sortedArray, animations] = getQuickSortAnimations(array);
     console.log(animations);
+    let sorted = [];
 
     const intervalId = setInterval(() => {
-      handleAnimation(animations.shift(), intervalId);
+      handleAnimation(animations.shift(), intervalId, sorted);
     }, 200);
 
     // handleAnimation(animations.shift());
@@ -128,7 +129,7 @@ export default function Nav() {
     // handleAnimation(animations.shift());
   }
 
-  const handleAnimation = (animation, intervalId) => {
+  const handleAnimation = (animation, intervalId, sorted) => {
     if (!runningRef.current) return;
     const arrayBars = document.querySelectorAll(".bar");
     if (animation === undefined) {
@@ -140,13 +141,13 @@ export default function Nav() {
       return;
     }
     const [code, idx1, idx2, oldHeight, newHeight] = animation;
-    console.log(code, idx1, idx2, oldHeight, newHeight);
+    // console.log(code, idx1, idx2, oldHeight, newHeight);
 
     if (code === "pivot") {
       const pivotIndex = idx1;
       const barStyle = arrayBars[pivotIndex].style;
       barStyle.backgroundColor = "blue";
-      console.log(code);
+
       for (let i = 0; i < pivotIndex; i++) {
         const barStyle = arrayBars[i].style;
         barStyle.backgroundColor = "lightgreen";
@@ -156,19 +157,16 @@ export default function Nav() {
       const selectIndex = idx1;
       const barStyle = arrayBars[selectIndex].style;
       barStyle.backgroundColor = "yellow";
-      console.log(code);
     }
     if (code === "deselect") {
       const selectIndex = idx1;
       const barStyle = arrayBars[selectIndex].style;
       barStyle.backgroundColor = "turquoise";
-      console.log(code);
     }
     if (code === "smaller") {
       const selectIndex = idx1;
       const barStyle = arrayBars[selectIndex].style;
       barStyle.backgroundColor = "pink";
-      console.log(code);
     }
     if (code === "swap1") {
       const bar1Style = arrayBars[idx1].style;
@@ -177,19 +175,21 @@ export default function Nav() {
       bar2Style.height = `${oldHeight}px`;
       bar1Style.backgroundColor = "pink";
       bar2Style.backgroundColor = "turquoise";
-      console.log(code);
     }
     if (code === "swap2") {
       const bar1Style = arrayBars[idx1].style;
       const bar2Style = arrayBars[idx2].style;
       bar1Style.height = `${newHeight}px`;
       bar2Style.height = `${oldHeight}px`;
+      sorted.push(idx1);
       for (let i = 0; i < arrayBars.length; i++) {
-        const barStyle = arrayBars[i].style;
-        barStyle.backgroundColor = "turquoise";
+        // this is erasing the pivots that were earlier sorted
+        if (sorted.includes(i) === false) {
+          const barStyle = arrayBars[i].style;
+          barStyle.backgroundColor = "turquoise";
+        }
       }
       bar1Style.backgroundColor = "lightgreen";
-      console.log(code);
     }
   };
 
