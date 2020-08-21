@@ -130,18 +130,27 @@ export default function Nav() {
 
   const handleAnimation = (animation, intervalId) => {
     if (!runningRef.current) return;
+    const arrayBars = document.querySelectorAll(".bar");
     if (animation === undefined) {
       clearInterval(intervalId);
+      for (let i = 0; i < arrayBars.length; i++) {
+        const barStyle = arrayBars[i].style;
+        barStyle.backgroundColor = "lightgreen";
+      }
       return;
     }
     const [code, idx1, idx2, oldHeight, newHeight] = animation;
     console.log(code, idx1, idx2, oldHeight, newHeight);
-    const arrayBars = document.querySelectorAll(".bar");
+
     if (code === "pivot") {
       const pivotIndex = idx1;
       const barStyle = arrayBars[pivotIndex].style;
       barStyle.backgroundColor = "blue";
       console.log(code);
+      for (let i = 0; i < pivotIndex; i++) {
+        const barStyle = arrayBars[i].style;
+        barStyle.backgroundColor = "lightgreen";
+      }
     }
     if (code === "select") {
       const selectIndex = idx1;
@@ -166,6 +175,8 @@ export default function Nav() {
       const bar2Style = arrayBars[idx2].style;
       bar1Style.height = `${newHeight}px`;
       bar2Style.height = `${oldHeight}px`;
+      bar1Style.backgroundColor = "pink";
+      bar2Style.backgroundColor = "turquoise";
       console.log(code);
     }
     if (code === "swap2") {
@@ -173,7 +184,11 @@ export default function Nav() {
       const bar2Style = arrayBars[idx2].style;
       bar1Style.height = `${newHeight}px`;
       bar2Style.height = `${oldHeight}px`;
-      bar1Style.backgroundColor = "green";
+      for (let i = 0; i < arrayBars.length; i++) {
+        const barStyle = arrayBars[i].style;
+        barStyle.backgroundColor = "turquoise";
+      }
+      bar1Style.backgroundColor = "lightgreen";
       console.log(code);
     }
   };
