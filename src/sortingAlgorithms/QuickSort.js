@@ -16,12 +16,13 @@ function quickSort(array, l, r, animations) {
 }
 
 function partition(array, l, r, animations) {
-  // let p = randomIntFromInterval(l, r);
-  // animations.push(["select", p, l]);
-  // animations.push(["swap", p, l, array[l], array[p]]);
-  // animations.push(["deselect", p, l]);
-  // swap(array, p, l);
-  let p = l;
+  let p = randomIntFromInterval(l, r);
+  animations.push(["select", p]);
+
+  animations.push(["swap3", p, l, array[p], array[l]]);
+
+  swap(array, p, l);
+  p = l;
   const pivot = array[p];
   animations.push(["pivot", p]);
   for (let i = l + 1; i <= r; i++) {

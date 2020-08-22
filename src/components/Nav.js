@@ -14,48 +14,6 @@ export default function Nav() {
     DataContext
   );
 
-  // const handleQuickSort = () => {
-  //   const [sortedArray, animations] = getQuickSortAnimations(array);
-  //   const arrayBars = document.querySelectorAll(".bar");
-  //   for (let i = 0; i < animations.length; i++) {
-  //     const isSelect =
-  //       animations[i][0] === "select" || animations[i][0] === "deselect";
-  //     if (isSelect) {
-  //       const color =
-  //         animations[i][0] === "select" ? comp_color : primary_color;
-  //       const [code, bar1, bar2] = animations[i];
-  //       const bar1Style = arrayBars[bar1].style;
-  //       const bar2Style = arrayBars[bar2].style;
-  //       setTimeout(() => {
-  //         bar1Style.backgroundColor = color;
-  //         bar2Style.backgroundColor = color;
-  //       }, i * (500 / speed));
-  //     } else if (animations[i][0] === "sorted") {
-  //       const bar = animations[i][1];
-  //       const barStyle = arrayBars[bar].style;
-  //       barStyle.backgroundColor = "green";
-  //     } else {
-  //       const [swap, bar1Index, bar2Index, newHeight, oldHeight] = animations[
-  //         i
-  //       ];
-  //       if (bar1Index === -1 || bar2Index === -1) {
-  //         continue;
-  //       }
-  //       const color = animations[i][0] === "swap" ? swap_color : primary_color;
-
-  //       const bar1Style = arrayBars[bar1Index].style;
-  //       const bar2Style = arrayBars[bar2Index].style;
-  //       setTimeout(() => {
-  //         bar1Style.backgroundColor = color;
-  //         bar2Style.backgroundColor = color;
-  //         bar1Style.height = `${newHeight}px`;
-  //         bar2Style.height = `${oldHeight}px`;
-  //       }, i * (500 / speed));
-  //     }
-  //   }
-  //   console.log(sortedArray);
-  // };
-
   const handleBubbleSort = () => {
     const [sortedArray, animations] = getBubbleSortAnimations(array);
     // console.log(animations.length);
@@ -122,11 +80,6 @@ export default function Nav() {
     const intervalId = setInterval(() => {
       handleAnimation(animations.shift(), intervalId, sorted);
     }, 200);
-
-    // handleAnimation(animations.shift());
-    // handleAnimation(animations.shift());
-    // handleAnimation(animations.shift());
-    // handleAnimation(animations.shift());
   }
 
   const handleAnimation = (animation, intervalId, sorted) => {
@@ -151,6 +104,7 @@ export default function Nav() {
       for (let i = 0; i < pivotIndex; i++) {
         const barStyle = arrayBars[i].style;
         barStyle.backgroundColor = "lightgreen";
+        sorted.push(i);
       }
     }
     if (code === "select") {
@@ -190,6 +144,16 @@ export default function Nav() {
         }
       }
       bar1Style.backgroundColor = "lightgreen";
+    }
+    if (code === "swap3") {
+      const bar1Style = arrayBars[idx1].style;
+      const bar2Style = arrayBars[idx2].style;
+      bar1Style.height = `${newHeight}px`;
+      bar2Style.height = `${oldHeight}px`;
+      if (sorted.includes(idx1) === false)
+        bar1Style.backgroundColor = "turquoise";
+      else bar1Style.backgroundColor = "lightgreen";
+      bar2Style.backgroundColor = "blue";
     }
   };
 
