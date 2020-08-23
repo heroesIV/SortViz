@@ -9,13 +9,16 @@ const comp_color = "yellow";
 const swap_color = "red";
 
 export default function Nav() {
-  const [length, setLength, array, setArray, speed, setSpeed] = useContext(
-    DataContext
-  );
+  const [length, setLength, array, setArray] = useContext(DataContext);
+
+  const [speed, setSpeed] = useState(10);
 
   const [running, setRunning] = useState(false);
   const runningRef = useRef(running);
   runningRef.current = running;
+
+  const speedRef = useRef(speed);
+  speedRef.current = speed;
 
   const pauseButton = () => {
     setRunning(!running);
@@ -25,28 +28,39 @@ export default function Nav() {
     setRunning(true);
 
     const [sortedArray, animations] = getBubbleSortAnimations(array);
-    console.log(animations);
+    // console.log(animations);
     let sorted = [];
 
-    const intervalId = setInterval(() => {
-      handleAnimation(animations.shift(), intervalId, sorted);
-    }, 1000 / speed);
+    let intervalId = setInterval(() => {
+      if (!runningRef.current) return;
+      handleAnimation(animations.shift(), animations, intervalId, sorted);
+    }, 2000 / speedRef.current);
   };
 
   const handleQuickSort = () => {
     setRunning(true);
 
     const [sortedArray, animations] = getQuickSortAnimations(array);
-    console.log(animations);
+    // console.log(animations);
     let sorted = [];
 
-    const intervalId = setInterval(() => {
-      handleAnimation(animations.shift(), intervalId, sorted);
-    }, 1000 / speed);
+    let interval = 1000;
+
+    let intervalId = setInterval(() => {
+      if (!runningRef.current) return;
+      handleAnimation(animations.shift(), animations, intervalId, sorted);
+    }, 2000 / speedRef.current);
   };
 
-  const handleAnimation = (animation, intervalId, sorted) => {
-    if (!runningRef.current) return;
+  const handleAnimation = (animation, animations, intervalId, sorted) => {
+    // console.log(interval);
+    // console.log(speedRef.current);
+    clearInterval(intervalId);
+    intervalId = setInterval(() => {
+      if (!runningRef.current) return;
+      handleAnimation(animations.shift(), animations, intervalId, sorted);
+    }, 2000 / speedRef.current);
+
     const arrayBars = document.querySelectorAll(".bar");
     if (animation === undefined) {
       clearInterval(intervalId);
