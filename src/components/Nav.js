@@ -11,17 +11,28 @@ const swap_color = "red";
 export default function Nav() {
   const [length, setLength, array, setArray] = useContext(DataContext);
 
+  // console.log(array);
+
   const [speed, setSpeed] = useState(10);
+  const speedRef = useRef(speed);
+  speedRef.current = speed;
 
   const [running, setRunning] = useState(false);
   const runningRef = useRef(running);
   runningRef.current = running;
 
-  const speedRef = useRef(speed);
-  speedRef.current = speed;
-
-  const pauseButton = () => {
+  const handlePause = () => {
     setRunning(!running);
+  };
+
+  const handleReset = () => {
+    setRunning(false);
+    const arrayBars = document.querySelectorAll(".bar");
+    for (let i = 0; i < arrayBars.length; i++) {
+      const barStyle = arrayBars[i].style;
+      barStyle.height = `${array[i]}px`;
+      barStyle.backgroundColor = "turquoise";
+    }
   };
 
   const handleBubbleSort = () => {
@@ -64,6 +75,7 @@ export default function Nav() {
     const arrayBars = document.querySelectorAll(".bar");
     if (animation === undefined) {
       clearInterval(intervalId);
+      setRunning(false);
       for (let i = 0; i < arrayBars.length; i++) {
         const barStyle = arrayBars[i].style;
         barStyle.backgroundColor = "lightgreen";
@@ -210,10 +222,16 @@ export default function Nav() {
           Bubble Sort
         </Button>
         <Button
-          onClick={pauseButton}
+          onClick={handlePause}
           style={{ color: "white", fontWeight: "bold" }}
         >
           {running ? "PAUSE" : "PLAY"}
+        </Button>
+        <Button
+          onClick={handleReset}
+          style={{ color: "white", fontWeight: "bold" }}
+        >
+          Reset
         </Button>
       </div>
     </div>
