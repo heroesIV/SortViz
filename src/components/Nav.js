@@ -3,7 +3,6 @@ import { Slider, Button } from "@material-ui/core";
 import { DataContext } from "../DataContext";
 import { getBubbleSortAnimations } from "../sortingAlgorithms/BubbleSort";
 import { getQuickSortAnimations } from "../sortingAlgorithms/QuickSort";
-// import produce from "immer";
 
 const primary_color = "turquoise";
 const comp_color = "yellow";
@@ -14,54 +13,6 @@ export default function Nav() {
     DataContext
   );
 
-  const handleBubbleSort = () => {
-    const [sortedArray, animations] = getBubbleSortAnimations(array);
-    // console.log(animations.length);
-    for (let i = 0; i < animations.length; i++) {
-      const isColorChange =
-        animations[i][0] === "bar1" || animations[i][0] === "bar2";
-      const arrayBars = document.querySelectorAll(".bar");
-      if (isColorChange) {
-        const color = animations[i][0] === "bar1" ? comp_color : primary_color;
-
-        const [code, bar1, bar2] = animations[i];
-        // console.log(arrayBars, bar1, bar2);
-
-        const bar1Style = arrayBars[bar1].style;
-        const bar2Style = arrayBars[bar2].style;
-        // console.log(speed);
-        setTimeout(() => {
-          bar1Style.backgroundColor = color;
-          bar2Style.backgroundColor = color;
-        }, i * (500 / speed));
-      } else {
-        const [swap, barIndex, newHeight, oldHeight] = animations[i];
-        if (barIndex === -1) {
-          continue;
-        }
-        const color = animations[i][0] === "swap1" ? swap_color : primary_color;
-
-        let bar1Style, bar2Style;
-        if (animations[i][0] === "swap1") {
-          bar1Style = arrayBars[barIndex].style;
-          bar2Style = arrayBars[barIndex + 1].style;
-          setTimeout(() => {
-            bar1Style.backgroundColor = color;
-            bar2Style.backgroundColor = color;
-            bar1Style.height = `${newHeight}px`;
-            bar2Style.height = `${oldHeight}px`;
-          }, i * (500 / speed));
-        } else {
-          bar1Style = arrayBars[barIndex].style;
-          bar2Style = arrayBars[barIndex - 1].style;
-          setTimeout(() => {
-            bar1Style.backgroundColor = color;
-            bar2Style.backgroundColor = color;
-          }, i * (500 / speed));
-        }
-      }
-    }
-  };
   const [running, setRunning] = useState(false);
   const runningRef = useRef(running);
   runningRef.current = running;
@@ -70,7 +21,19 @@ export default function Nav() {
     setRunning(!running);
   };
 
-  function handleQuickSort() {
+  const handleBubbleSort = () => {
+    setRunning(true);
+
+    const [sortedArray, animations] = getBubbleSortAnimations(array);
+    console.log(animations);
+    let sorted = [];
+
+    const intervalId = setInterval(() => {
+      handleAnimation(animations.shift(), intervalId, sorted);
+    }, 1000 / speed);
+  };
+
+  const handleQuickSort = () => {
     setRunning(true);
 
     const [sortedArray, animations] = getQuickSortAnimations(array);
@@ -79,8 +42,8 @@ export default function Nav() {
 
     const intervalId = setInterval(() => {
       handleAnimation(animations.shift(), intervalId, sorted);
-    }, 200);
-  }
+    }, 1000 / speed);
+  };
 
   const handleAnimation = (animation, intervalId, sorted) => {
     if (!runningRef.current) return;
@@ -94,7 +57,6 @@ export default function Nav() {
       return;
     }
     const [code, idx1, idx2, oldHeight, newHeight] = animation;
-    // console.log(code, idx1, idx2, oldHeight, newHeight);
 
     if (code === "pivot") {
       const pivotIndex = idx1;
@@ -109,12 +71,20 @@ export default function Nav() {
     }
     if (code === "select") {
       const selectIndex = idx1;
+      if (idx2 !== undefined) {
+        const barStyle = arrayBars[idx2].style;
+        barStyle.backgroundColor = "yellow";
+      }
       const barStyle = arrayBars[selectIndex].style;
       barStyle.backgroundColor = "yellow";
     }
     if (code === "deselect") {
       const selectIndex = idx1;
       const barStyle = arrayBars[selectIndex].style;
+      if (idx2 !== undefined) {
+        const barStyle = arrayBars[idx2].style;
+        barStyle.backgroundColor = "turquoise";
+      }
       barStyle.backgroundColor = "turquoise";
     }
     if (code === "smaller") {
@@ -137,7 +107,7 @@ export default function Nav() {
       bar2Style.height = `${oldHeight}px`;
       sorted.push(idx1);
       for (let i = 0; i < arrayBars.length; i++) {
-        // this is erasing the pivots that were earlier sorted
+        // this is erasing the pivots that were earlier sorted SOLVED
         if (sorted.includes(i) === false) {
           const barStyle = arrayBars[i].style;
           barStyle.backgroundColor = "turquoise";
@@ -154,6 +124,18 @@ export default function Nav() {
         bar1Style.backgroundColor = "turquoise";
       else bar1Style.backgroundColor = "lightgreen";
       bar2Style.backgroundColor = "blue";
+    }
+    if (code === "swap4") {
+      const bar1Style = arrayBars[idx1].style;
+      const bar2Style = arrayBars[idx2].style;
+      bar1Style.height = `${newHeight}px`;
+      bar2Style.height = `${oldHeight}px`;
+      bar1Style.backgroundColor = "red";
+      bar2Style.backgroundColor = "red";
+    }
+    if (code === "sorted") {
+      const barStyle = arrayBars[idx1].style;
+      barStyle.backgroundColor = "lightgreen";
     }
   };
 
