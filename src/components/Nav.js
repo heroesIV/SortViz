@@ -170,7 +170,7 @@ export default function Nav() {
       <h1>Sorting Visualiser</h1>
       <div
         style={{
-          width: "30%",
+          width: "50%",
           margin: "auto",
           display: "flex",
         }}
