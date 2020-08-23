@@ -3,15 +3,36 @@ import { Slider, Button } from "@material-ui/core";
 import { DataContext } from "../DataContext";
 import { getBubbleSortAnimations } from "../sortingAlgorithms/BubbleSort";
 import { getQuickSortAnimations } from "../sortingAlgorithms/QuickSort";
+import { makeStyles } from "@material-ui/core/styles";
 
 const primary_color = "turquoise";
 const comp_color = "yellow";
 const swap_color = "red";
 
-export default function Nav() {
-  const [length, setLength, array, setArray] = useContext(DataContext);
+const useStyles = makeStyles({
+  root: {
+    background: "linear-gradient(45deg, #121212 30%, #282828 90%)",
+    border: 0,
+    borderRadius: 3,
+    boxShadow: "0 3px 5px 2px #212121",
+    color: "white",
+    // height: 48,
+    margin: "15px 10px",
+    padding: "5px 20px",
+    fontWeight: "bold",
+  },
+});
 
-  // console.log(array);
+export default function Nav() {
+  let [length, setLength, array, setArray, ogArray, setOgArray] = useContext(
+    DataContext
+  );
+
+  const classes = useStyles();
+
+  useEffect(() => {
+    handleReset();
+  }, [length]);
 
   const [speed, setSpeed] = useState(10);
   const speedRef = useRef(speed);
@@ -21,41 +42,63 @@ export default function Nav() {
   const runningRef = useRef(running);
   runningRef.current = running;
 
+  const [disable, setDisable] = useState(false);
+  const [disable2, setDisable2] = useState(false);
+
   const handlePause = () => {
     setRunning(!running);
   };
 
   const handleReset = () => {
     setRunning(false);
+    setDisable2(false);
+
     const arrayBars = document.querySelectorAll(".bar");
+
     for (let i = 0; i < arrayBars.length; i++) {
       const barStyle = arrayBars[i].style;
-      barStyle.height = `${array[i]}px`;
+      barStyle.height = `${ogArray[i]}px`;
       barStyle.backgroundColor = "turquoise";
     }
+    setArray(ogArray);
+  };
+
+  const handleReverse = () => {
+    setRunning(false);
+    setDisable2(false);
+    const arrayBars = document.querySelectorAll(".bar");
+    let revArray = [...array];
+    revArray = revArray.sort((a, b) => {
+      return b - a;
+    });
+    for (let i = 0; i < arrayBars.length; i++) {
+      const barStyle = arrayBars[i].style;
+      barStyle.height = `${revArray[i]}px`;
+      barStyle.backgroundColor = "turquoise";
+    }
+    setArray(revArray);
   };
 
   const handleBubbleSort = () => {
     setRunning(true);
+    setDisable(true);
+    setDisable2(true);
 
     const [sortedArray, animations] = getBubbleSortAnimations(array);
-    // console.log(animations);
-    let sorted = [];
 
     let intervalId = setInterval(() => {
       if (!runningRef.current) return;
-      handleAnimation(animations.shift(), animations, intervalId, sorted);
+      handleAnimation(animations.shift(), animations, intervalId);
     }, 2000 / speedRef.current);
   };
 
   const handleQuickSort = () => {
     setRunning(true);
+    setDisable(true);
+    setDisable2(true);
 
     const [sortedArray, animations] = getQuickSortAnimations(array);
-    // console.log(animations);
     let sorted = [];
-
-    let interval = 1000;
 
     let intervalId = setInterval(() => {
       if (!runningRef.current) return;
@@ -64,8 +107,6 @@ export default function Nav() {
   };
 
   const handleAnimation = (animation, animations, intervalId, sorted) => {
-    // console.log(interval);
-    // console.log(speedRef.current);
     clearInterval(intervalId);
     intervalId = setInterval(() => {
       if (!runningRef.current) return;
@@ -76,6 +117,7 @@ export default function Nav() {
     if (animation === undefined) {
       clearInterval(intervalId);
       setRunning(false);
+      setDisable(false);
       for (let i = 0; i < arrayBars.length; i++) {
         const barStyle = arrayBars[i].style;
         barStyle.backgroundColor = "lightgreen";
@@ -168,6 +210,7 @@ export default function Nav() {
   return (
     <div>
       <h1>Sorting Visualiser</h1>
+
       <div
         style={{
           width: "50%",
@@ -186,6 +229,7 @@ export default function Nav() {
           max={80}
           valueLabelDisplay="auto"
           style={{ margin: "0 10px 0 10px" }}
+          disabled={disable}
         />
 
         <Slider
@@ -196,7 +240,7 @@ export default function Nav() {
           }}
           aria-labelledby="continuous-slider"
           min={2}
-          max={100}
+          max={200}
           valueLabelDisplay="auto"
           style={{ margin: "0 10px 0 10px" }}
         />
@@ -207,31 +251,39 @@ export default function Nav() {
           margin: "auto",
           display: "flex",
           justifyContent: "center",
+          flexWrap: "wrap",
         }}
       >
         <Button
           onClick={handleQuickSort}
-          style={{ color: "white", fontWeight: "bold" }}
+          disabled={disable2}
+          className={classes.root}
         >
           Quick Sort
         </Button>
         <Button
           onClick={handleBubbleSort}
-          style={{ color: "white", fontWeight: "bold" }}
+          disabled={disable2}
+          className={classes.root}
         >
           Bubble Sort
         </Button>
-        <Button
-          onClick={handlePause}
-          style={{ color: "white", fontWeight: "bold" }}
-        >
+        <Button onClick={handlePause} className={classes.root}>
           {running ? "PAUSE" : "PLAY"}
         </Button>
         <Button
           onClick={handleReset}
-          style={{ color: "white", fontWeight: "bold" }}
+          disabled={disable}
+          className={classes.root}
         >
           Reset
+        </Button>
+        <Button
+          onClick={handleReverse}
+          disabled={disable}
+          className={classes.root}
+        >
+          Reverse
         </Button>
       </div>
     </div>

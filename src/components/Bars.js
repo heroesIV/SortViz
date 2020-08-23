@@ -2,13 +2,16 @@ import React, { useContext, useEffect } from "react";
 import { DataContext } from "../DataContext";
 
 export default function Bars() {
-  const [length, setLength, array, setArray] = useContext(DataContext);
+  const [length, setLength, array, setArray, ogArray, setOgArray] = useContext(
+    DataContext
+  );
   const makeArray = () => {
     const newArray = Array.from(Array(length), () =>
       Math.floor(Math.random() * 400)
     );
 
     setArray(newArray);
+    setOgArray(newArray);
   };
 
   useEffect(() => {
@@ -27,7 +30,7 @@ export default function Bars() {
           height: "420px",
           width: "90%",
           margin: "auto",
-          marginTop: "4%",
+          marginTop: "2%",
         }}
       >
         {array.map((height, index) => {
