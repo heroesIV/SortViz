@@ -268,7 +268,11 @@ export default function Nav() {
         >
           Bubble Sort
         </Button>
-        <Button onClick={handlePause} className={classes.root}>
+        <Button
+          onClick={handlePause}
+          className={classes.root}
+          disabled={!disable}
+        >
           {running ? "PAUSE" : "PLAY"}
         </Button>
         <Button
