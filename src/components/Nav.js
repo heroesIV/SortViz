@@ -1,12 +1,12 @@
-import React, { useContext, useRef, useState, useEffect } from "react";
-import { Slider, Button, Typography, Grid } from "@material-ui/core";
+import React, { useContext, useRef, useEffect } from "react";
 import { DataContext } from "../DataContext";
 import { getBubbleSortAnimations } from "../sortingAlgorithms/BubbleSort";
 import { getQuickSortAnimations } from "../sortingAlgorithms/QuickSort";
 
 import NavBar from "./NavBar";
+import theme from "../Theme";
 
-// const primary_color = "turquoise";
+// const primary_color = primary.main;
 // const comp_color = "yellow";
 // const swap_color = "red";
 
@@ -32,6 +32,9 @@ export default function Nav() {
     handleReset();
   }, [length]);
 
+  const { primary, secondary } = theme.palette;
+  // console.log(primary.main);
+
   const speedRef = useRef(speed);
   speedRef.current = speed;
 
@@ -51,7 +54,7 @@ export default function Nav() {
     for (let i = 0; i < arrayBars.length; i++) {
       const barStyle = arrayBars[i].style;
       barStyle.height = `${ogArray[i]}px`;
-      barStyle.backgroundColor = "turquoise";
+      barStyle.backgroundColor = primary.main;
     }
     setArray(ogArray);
   };
@@ -67,7 +70,7 @@ export default function Nav() {
     for (let i = 0; i < arrayBars.length; i++) {
       const barStyle = arrayBars[i].style;
       barStyle.height = `${revArray[i]}px`;
-      barStyle.backgroundColor = "turquoise";
+      barStyle.backgroundColor = primary.main;
     }
     setArray(revArray);
   };
@@ -144,9 +147,9 @@ export default function Nav() {
       const barStyle = arrayBars[selectIndex].style;
       if (idx2 !== undefined) {
         const barStyle = arrayBars[idx2].style;
-        barStyle.backgroundColor = "turquoise";
+        barStyle.backgroundColor = primary.main;
       }
-      barStyle.backgroundColor = "turquoise";
+      barStyle.backgroundColor = primary.main;
     }
     if (code === "smaller") {
       const selectIndex = idx1;
@@ -159,7 +162,7 @@ export default function Nav() {
       bar1Style.height = `${newHeight}px`;
       bar2Style.height = `${oldHeight}px`;
       bar1Style.backgroundColor = "pink";
-      bar2Style.backgroundColor = "turquoise";
+      bar2Style.backgroundColor = primary.main;
     }
     if (code === "swap2") {
       const bar1Style = arrayBars[idx1].style;
@@ -171,7 +174,7 @@ export default function Nav() {
         // this is erasing the pivots that were earlier sorted SOLVED
         if (sorted.includes(i) === false) {
           const barStyle = arrayBars[i].style;
-          barStyle.backgroundColor = "turquoise";
+          barStyle.backgroundColor = primary.main;
         }
       }
       bar1Style.backgroundColor = "lightgreen";
@@ -182,7 +185,7 @@ export default function Nav() {
       bar1Style.height = `${newHeight}px`;
       bar2Style.height = `${oldHeight}px`;
       if (sorted.includes(idx1) === false)
-        bar1Style.backgroundColor = "turquoise";
+        bar1Style.backgroundColor = primary.main;
       else bar1Style.backgroundColor = "lightgreen";
       bar2Style.backgroundColor = "blue";
     }
