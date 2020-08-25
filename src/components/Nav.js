@@ -1,47 +1,42 @@
 import React, { useContext, useRef, useState, useEffect } from "react";
-import { Slider, Button, Typography } from "@material-ui/core";
+import { Slider, Button, Typography, Grid } from "@material-ui/core";
 import { DataContext } from "../DataContext";
 import { getBubbleSortAnimations } from "../sortingAlgorithms/BubbleSort";
 import { getQuickSortAnimations } from "../sortingAlgorithms/QuickSort";
-import { makeStyles } from "@material-ui/core/styles";
 
-const primary_color = "turquoise";
-const comp_color = "yellow";
-const swap_color = "red";
+import NavBar from "./NavBar";
 
-const useStyles = makeStyles({
-  buttonStyles: {
-    margin: "10px",
-  },
-  headingStyles: {
-    margin: "20px 0 50px 0",
-  },
-  sliderStyles: {
-    margin: "0 10px 0 10px",
-  },
-});
+// const primary_color = "turquoise";
+// const comp_color = "yellow";
+// const swap_color = "red";
 
 export default function Nav() {
-  let [length, setLength, array, setArray, ogArray, setOgArray] = useContext(
-    DataContext
-  );
-
-  const classes = useStyles();
+  const [
+    length,
+    setLength,
+    array,
+    setArray,
+    ogArray,
+    setOgArray,
+    speed,
+    setSpeed,
+    running,
+    setRunning,
+    disable,
+    setDisable,
+    disable2,
+    setDisable2,
+  ] = useContext(DataContext);
 
   useEffect(() => {
     handleReset();
   }, [length]);
 
-  const [speed, setSpeed] = useState(10);
   const speedRef = useRef(speed);
   speedRef.current = speed;
 
-  const [running, setRunning] = useState(false);
   const runningRef = useRef(running);
   runningRef.current = running;
-
-  const [disable, setDisable] = useState(false);
-  const [disable2, setDisable2] = useState(false);
 
   const handlePause = () => {
     setRunning(!running);
@@ -206,99 +201,14 @@ export default function Nav() {
   };
 
   return (
-    <div>
-      <Typography
-        variant="h2"
-        color="primary"
-        className={classes.headingStyles}
-      >
-        Sorting Visualiser
-      </Typography>
-
-      <div
-        style={{
-          width: "50%",
-          margin: "auto",
-          display: "flex",
-        }}
-      >
-        <Slider
-          value={length}
-          onChange={(e, newValue) => {
-            e.preventDefault();
-            setLength(newValue);
-          }}
-          aria-labelledby="continuous-slider"
-          min={2}
-          max={80}
-          valueLabelDisplay="auto"
-          disabled={disable}
-          className={classes.sliderStyles}
-        />
-
-        <Slider
-          value={speed}
-          onChange={(e, newValue) => {
-            e.preventDefault();
-            setSpeed(newValue);
-          }}
-          aria-labelledby="continuous-slider"
-          min={2}
-          max={200}
-          valueLabelDisplay="auto"
-          className={classes.sliderStyles}
-        />
-      </div>
-      <div
-        style={{
-          width: "90%",
-          margin: "auto",
-          display: "flex",
-          justifyContent: "center",
-          flexWrap: "wrap",
-        }}
-      >
-        <Button
-          onClick={handleQuickSort}
-          disabled={disable2}
-          className={classes.buttonStyles}
-          color="primary"
-        >
-          Quick Sort
-        </Button>
-        <Button
-          onClick={handleBubbleSort}
-          disabled={disable2}
-          className={classes.buttonStyles}
-          color="primary"
-        >
-          Bubble Sort
-        </Button>
-        <Button
-          onClick={handlePause}
-          className={classes.buttonStyles}
-          disabled={!disable}
-          color="primary"
-        >
-          {running ? "PAUSE" : "PLAY"}
-        </Button>
-        <Button
-          onClick={handleReset}
-          disabled={disable}
-          className={classes.buttonStyles}
-          color="primary"
-        >
-          Reset
-        </Button>
-        <Button
-          onClick={handleReverse}
-          disabled={disable}
-          className={classes.buttonStyles}
-          color="primary"
-        >
-          Reverse
-        </Button>
-      </div>
-    </div>
+    <>
+      <NavBar
+        handlePause={handlePause}
+        handleQuickSort={handleQuickSort}
+        handleBubbleSort={handleBubbleSort}
+        handleReset={handleReset}
+        handleReverse={handleReverse}
+      />
+    </>
   );
 }

@@ -1,14 +1,15 @@
 import React from "react";
-import Nav from "./components/Nav";
-import Bars from "./components/Bars";
+import SortViz from "./components/SortViz";
+import Appbar from "./components/Appbar";
 import { DataProvider } from "./DataContext";
+import { AppBar } from "@material-ui/core";
 
 function App() {
   return (
     <div>
       <DataProvider>
-        <Nav />
-        <Bars />
+        <Appbar />
+        <SortViz />
       </DataProvider>
     </div>
   );
