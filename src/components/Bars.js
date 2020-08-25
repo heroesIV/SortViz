@@ -100,7 +100,30 @@ export default function Bars() {
               iusto facilis sapiente iure quibusdam perspiciatis sed? Accusamus
               sed ut temporibus Lorem ipsum dolor sit amet consectetur
               adipisicing elit. Ad dolorem veniam debitis iste impedit tempora,
-              delectus earum quas.
+              delectus earum quas. Lorem ipsum dolor sit amet consectetur
+              adipisicing elit. Ducimus quas quaerat quae rerum eveniet voluptas
+              non ad amet praesentium laudantium? Sint sed doloremque, debitis
+              corporis error quae, veniam voluptatem quis voluptatibus cum enim
+              quos, culpa porro. Tempora quibusdam consectetur sed sint natus
+              debitis voluptates voluptatibus enim vel laboriosam, a, ea harum
+              non aliquam commodi sapiente! Fugit iure deleniti, magnam
+              consectetur, tempore obcaecati error minima veniam porro placeat
+              magni? Deserunt odit, deleniti exercitationem amet quod aut quam
+              blanditiis incidunt nobis minima rerum nesciunt labore? Minus
+              natus adipisci soluta numquam voluptate. Nemo exercitationem illo
+              reprehenderit, doloremque obcaecati delectus asperiores animi,
+              neque cumque omnis autem accusantium ipsam ratione doloribus
+              officia alias. Voluptatibus nam quas dolor architecto natus rem
+              aperiam repellendus impedit illum reprehenderit corrupti, laborum
+              mollitia perferendis iure ad asperiores hic libero excepturi,
+              nobis quam provident et voluptates! Fugiat, odit omnis autem quia
+              ex nesciunt in ullam totam tempora dolore quibusdam error? Ratione
+              cupiditate perspiciatis tenetur. Sequi enim neque sit aspernatur
+              repellat voluptatem, expedita repudiandae quis commodi magnam,
+              ipsa quas ex velit vero itaque quasi impedit! Eaque expedita quos
+              nostrum magnam vero, ex tempore iusto quis reiciendis voluptatibus
+              praesentium similique aliquid temporibus ipsam, nemo incidunt.
+              Minus veniam sunt nam? Corporis illum saepe assumenda!
             </Typography>
           </Grid>
         </Paper>

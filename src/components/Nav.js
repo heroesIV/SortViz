@@ -2,6 +2,7 @@ import React, { useContext, useRef, useEffect } from "react";
 import { DataContext } from "../DataContext";
 import { getBubbleSortAnimations } from "../sortingAlgorithms/BubbleSort";
 import { getQuickSortAnimations } from "../sortingAlgorithms/QuickSort";
+import BottomAppbar from "./BottomAppbar";
 
 import NavBar from "./NavBar";
 import theme from "../Theme";
@@ -212,6 +213,7 @@ export default function Nav() {
         handleReset={handleReset}
         handleReverse={handleReverse}
       />
+      <BottomAppbar handlePause={handlePause} />
     </>
   );
 }
