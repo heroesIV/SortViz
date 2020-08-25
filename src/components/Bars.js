@@ -30,7 +30,7 @@ export default function Bars() {
           height: "420px",
           width: "90%",
           margin: "auto",
-          marginTop: "2%",
+          // marginTop: "2%",
         }}
       >
         {array.map((height, index) => {
