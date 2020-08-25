@@ -1,5 +1,5 @@
 import React, { useContext, useRef, useState, useEffect } from "react";
-import { Slider, Button } from "@material-ui/core";
+import { Slider, Button, Typography } from "@material-ui/core";
 import { DataContext } from "../DataContext";
 import { getBubbleSortAnimations } from "../sortingAlgorithms/BubbleSort";
 import { getQuickSortAnimations } from "../sortingAlgorithms/QuickSort";
@@ -10,16 +10,11 @@ const comp_color = "yellow";
 const swap_color = "red";
 
 const useStyles = makeStyles({
-  root: {
-    background: "linear-gradient(45deg, #121212 30%, #282828 90%)",
-    border: 0,
-    borderRadius: 3,
-    boxShadow: "0 3px 5px 2px #212121",
-    color: "white",
-    // height: 48,
-    margin: "15px 10px",
-    padding: "5px 20px",
-    fontWeight: "bold",
+  buttonStyles: {
+    margin: "10px",
+  },
+  headingStyles: {
+    margin: "20px 0 50px 0",
   },
 });
 
@@ -209,7 +204,13 @@ export default function Nav() {
 
   return (
     <div>
-      <h1>Sorting Visualiser</h1>
+      <Typography
+        variant="h2"
+        color="primary"
+        className={classes.headingStyles}
+      >
+        Sorting Visualiser
+      </Typography>
 
       <div
         style={{
@@ -257,35 +258,40 @@ export default function Nav() {
         <Button
           onClick={handleQuickSort}
           disabled={disable2}
-          className={classes.root}
+          className={classes.buttonStyles}
+          color="primary"
         >
           Quick Sort
         </Button>
         <Button
           onClick={handleBubbleSort}
           disabled={disable2}
-          className={classes.root}
+          className={classes.buttonStyles}
+          color="primary"
         >
           Bubble Sort
         </Button>
         <Button
           onClick={handlePause}
-          className={classes.root}
+          className={classes.buttonStyles}
           disabled={!disable}
+          color="primary"
         >
           {running ? "PAUSE" : "PLAY"}
         </Button>
         <Button
           onClick={handleReset}
           disabled={disable}
-          className={classes.root}
+          className={classes.buttonStyles}
+          color="primary"
         >
           Reset
         </Button>
         <Button
           onClick={handleReverse}
           disabled={disable}
-          className={classes.root}
+          className={classes.buttonStyles}
+          color="primary"
         >
           Reverse
         </Button>
