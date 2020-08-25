@@ -16,6 +16,9 @@ const useStyles = makeStyles({
   headingStyles: {
     margin: "20px 0 50px 0",
   },
+  sliderStyles: {
+    margin: "0 10px 0 10px",
+  },
 });
 
 export default function Nav() {
@@ -229,8 +232,8 @@ export default function Nav() {
           min={2}
           max={80}
           valueLabelDisplay="auto"
-          style={{ margin: "0 10px 0 10px" }}
           disabled={disable}
+          className={classes.sliderStyles}
         />
 
         <Slider
@@ -243,7 +246,7 @@ export default function Nav() {
           min={2}
           max={200}
           valueLabelDisplay="auto"
-          style={{ margin: "0 10px 0 10px" }}
+          className={classes.sliderStyles}
         />
       </div>
       <div
