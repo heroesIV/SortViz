@@ -50,8 +50,6 @@ export default function BottomAppbar({ handlePause }) {
     setRunning,
     disable,
     setDisable,
-    disable2,
-    setDisable2,
     algo,
     setAlgo,
     sorted,

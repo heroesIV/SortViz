@@ -20,8 +20,6 @@ export default function SimpleMenu() {
     setRunning,
     disable,
     setDisable,
-    disable2,
-    setDisable2,
     algo,
     setAlgo,
     sorted,

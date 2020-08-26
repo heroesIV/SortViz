@@ -10,7 +10,6 @@ export function DataProvider(props) {
   const [speed, setSpeed] = useState(50);
   const [running, setRunning] = useState(false);
   const [disable, setDisable] = useState(false);
-  const [disable2, setDisable2] = useState(false);
 
   const [sorted, setSorted] = useState(false);
 
@@ -31,8 +30,6 @@ export function DataProvider(props) {
         setRunning,
         disable,
         setDisable,
-        disable2,
-        setDisable2,
         algo,
         setAlgo,
         sorted,

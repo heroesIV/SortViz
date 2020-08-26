@@ -24,8 +24,6 @@ export default function SortViz() {
     setRunning,
     disable,
     setDisable,
-    disable2,
-    setDisable2,
     algo,
     setAlgo,
     sorted,
@@ -51,11 +49,9 @@ export default function SortViz() {
 
   useEffect(() => {
     makeArray();
-    // handleReset();
   }, [length]);
 
   const { primary, secondary } = theme.palette;
-  // console.log(primary.main);
 
   const speedRef = useRef(speed);
   speedRef.current = speed;

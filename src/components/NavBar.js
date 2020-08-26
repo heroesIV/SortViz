@@ -51,8 +51,6 @@ export default function NavBar({
     setRunning,
     disable,
     setDisable,
-    disable2,
-    setDisable2,
     algo,
     setAlgo,
     sorted,
@@ -109,32 +107,7 @@ export default function NavBar({
       <Grid item xs={12} sm={6} className={classes.sliderItem}>
         <Paper className={classes.algoPaper}>
           <SimpleMenu styles={classes.buttonStyles} />
-          {/* <Button
-            onClick={handleQuickSort}
-            disabled={disable2}
-            className={classes.buttonStyles}
-            color="primary"
-          >
-            Quick Sort
-          </Button>
-          <Button
-            onClick={handleBubbleSort}
-            disabled={disable2}
-            className={classes.buttonStyles}
-            color="primary"
-          >
-            Bubble Sort
-          </Button> */}
-          {/* <Button
-            onClick={() => {
-              setRunning(!running);
-            }}
-            className={classes.buttonStyles}
-            disabled={!disable}
-            color="primary"
-          >
-            {running ? "PAUSE" : "PLAY"}
-          </Button> */}
+
           <Button
             onClick={handleReset}
             disabled={disable}

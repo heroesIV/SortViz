@@ -72,10 +72,10 @@ export default function Bars() {
     setRunning,
     disable,
     setDisable,
-    disable2,
-    setDisable2,
     algo,
     setAlgo,
+    sorted,
+    setSorted,
   ] = useContext(DataContext);
   const classes = useStyles();
 
