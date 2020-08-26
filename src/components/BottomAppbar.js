@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function BottomAppbar() {
+export default function BottomAppbar({ handlePause }) {
   const classes = useStyles();
   const [
     length,
@@ -62,9 +62,7 @@ export default function BottomAppbar() {
             color="secondary"
             aria-label="add"
             className={classes.fabButton}
-            onClick={() => {
-              setRunning(!running);
-            }}
+            onClick={handlePause}
           >
             {running ? <PauseIcon /> : <PlayArrowIcon />}
           </Fab>
