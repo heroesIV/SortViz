@@ -40,10 +40,19 @@ export default function SortViz() {
     setArray(newArray);
     setOgArray(newArray);
     setSorted(false);
+
+    const arrayBars = document.querySelectorAll(".bar");
+
+    for (let i = 0; i < arrayBars.length; i++) {
+      const barStyle = arrayBars[i].style;
+      barStyle.height = `${ogArray[i]}px`;
+      barStyle.backgroundColor = primary.main;
+    }
   };
 
   useEffect(() => {
     makeArray();
+    // handleReset();
   }, [length]);
 
   const { primary, secondary } = theme.palette;
@@ -57,7 +66,6 @@ export default function SortViz() {
 
   const handleReset = () => {
     setRunning(false);
-    setDisable2(false);
     setSorted(false);
 
     const arrayBars = document.querySelectorAll(".bar");
@@ -72,7 +80,6 @@ export default function SortViz() {
 
   const handleReverse = () => {
     setRunning(false);
-    setDisable2(false);
     setSorted(false);
     const arrayBars = document.querySelectorAll(".bar");
     let revArray = [...array];
@@ -86,18 +93,6 @@ export default function SortViz() {
     }
     setArray(revArray);
   };
-
-  // useEffect(() => {
-  //   handleStart();
-  // }, [algo]);
-
-  // const handleStart = () => {
-  //   if (algo === "Bubble Sort") {
-  //     handleBubbleSort();
-  //   } else if (algo === "Quick Sort") {
-  //     handleQuickSort();
-  //   } else return;
-  // };
 
   const handlePause = () => {
     if (running === false && disable === false) {
@@ -114,7 +109,6 @@ export default function SortViz() {
   const handleBubbleSort = () => {
     setRunning(true);
     setDisable(true);
-    // setDisable2(true);
 
     const [sortedArray, animations] = getBubbleSortAnimations(array);
 
@@ -127,9 +121,6 @@ export default function SortViz() {
   const handleQuickSort = () => {
     setRunning(true);
     setDisable(true);
-    // setDisable2(true);
-
-    // if (!runningRef.current) return;
 
     const [sortedArray, animations] = getQuickSortAnimations(array);
     let sorted = [];
@@ -211,7 +202,6 @@ export default function SortViz() {
       bar2Style.height = `${oldHeight}px`;
       sorted.push(idx1);
       for (let i = 0; i < arrayBars.length; i++) {
-        // this is erasing the pivots that were earlier sorted SOLVED
         if (sorted.includes(i) === false) {
           const barStyle = arrayBars[i].style;
           barStyle.backgroundColor = primary.main;
