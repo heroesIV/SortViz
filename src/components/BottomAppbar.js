@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function BottomAppbar({ handlePause }) {
+export default function BottomAppbar() {
   const classes = useStyles();
   const [
     length,
@@ -54,18 +54,23 @@ export default function BottomAppbar({ handlePause }) {
   ] = useContext(DataContext);
 
   return (
-    <AppBar position="fixed" color="primary" className={classes.appBar}>
-      <Toolbar>
-        <Fab
-          color="secondary"
-          aria-label="add"
-          className={classes.fabButton}
-          onClick={handlePause}
-        >
-          {running ? <PauseIcon /> : <PlayArrowIcon />}
-        </Fab>
-        <div className={classes.grow} />
-      </Toolbar>
-    </AppBar>
+    <>
+      <Toolbar />
+      <AppBar position="fixed" color="primary" className={classes.appBar}>
+        <Toolbar>
+          <Fab
+            color="secondary"
+            aria-label="add"
+            className={classes.fabButton}
+            onClick={() => {
+              setRunning(!running);
+            }}
+          >
+            {running ? <PauseIcon /> : <PlayArrowIcon />}
+          </Fab>
+          <div className={classes.grow} />
+        </Toolbar>
+      </AppBar>
+    </>
   );
 }

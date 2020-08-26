@@ -42,10 +42,6 @@ export default function Nav() {
   const runningRef = useRef(running);
   runningRef.current = running;
 
-  const handlePause = () => {
-    setRunning(!running);
-  };
-
   const handleReset = () => {
     setRunning(false);
     setDisable2(false);
@@ -207,13 +203,11 @@ export default function Nav() {
   return (
     <>
       <NavBar
-        handlePause={handlePause}
         handleQuickSort={handleQuickSort}
         handleBubbleSort={handleBubbleSort}
         handleReset={handleReset}
         handleReverse={handleReverse}
       />
-      <BottomAppbar handlePause={handlePause} />
     </>
   );
 }

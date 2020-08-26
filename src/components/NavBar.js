@@ -27,7 +27,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function NavBar({
-  handlePause,
   handleQuickSort,
   handleBubbleSort,
   handleReset,
@@ -118,7 +117,9 @@ export default function NavBar({
             Bubble Sort
           </Button>
           <Button
-            onClick={handlePause}
+            onClick={() => {
+              setRunning(!running);
+            }}
             className={classes.buttonStyles}
             disabled={!disable}
             color="primary"
