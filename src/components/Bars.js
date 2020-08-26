@@ -48,6 +48,7 @@ const useStyles = makeStyles((theme) => ({
   },
   info: {
     height: "360px",
+    // margin: theme.spacing(1),
   },
 }));
 
@@ -106,8 +107,19 @@ export default function Bars() {
               adipisci aspernatur optio quo officiis velit repellendus neque,
               suscipit saepe veniam ex! Ullam, laboriosam. Doloremque incidunt
               iusto facilis sapiente iure quibusdam perspiciatis sed? Accusamus
-              sed ut temporibus Lorem ipsum dolor sit amet consectetur
-              adipisicing elit.
+              sed ut temporibus Lorem ipsum dolor sit amet consectetur Lorem
+              ipsum dolor sit, amet consectetur adipisicing elit. Voluptate
+              ipsam, eum, libero nostrum ab officiis illum amet sapiente
+              aspernatur eaque itaque aut ut quia, doloribus ratione. Impedit
+              minus consequatur, nam, sunt nesciunt rerum quas perspiciatis
+              maxime illum autem laudantium sequi ipsa, quia molestiae? Minus
+              iste dolor temporibus. Culpa quidem, doloremque perferendis nulla
+              amet autem sint corporis quam dolorem quos reprehenderit voluptate
+              modi nemo debitis, optio consectetur placeat voluptates ex rem?
+              Suscipit architecto quidem sed ad minus esse ipsam ipsum? Iure
+              modi architecto sed temporibus eius corrupti, suscipit quidem
+              voluptatum est neque consequuntur unde beatae odit cum numquam
+              dignissimos rem alias? adipisicing elit.
             </Typography>
           </Grid>
         </Paper>
