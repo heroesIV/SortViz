@@ -51,6 +51,11 @@ export default function BottomAppbar({ handlePause }) {
     disable,
     setDisable,
     disable2,
+    setDisable2,
+    algo,
+    setAlgo,
+    sorted,
+    setSorted,
   ] = useContext(DataContext);
 
   return (
@@ -63,6 +68,7 @@ export default function BottomAppbar({ handlePause }) {
             aria-label="add"
             className={classes.fabButton}
             onClick={handlePause}
+            disabled={sorted}
           >
             {running ? <PauseIcon /> : <PlayArrowIcon />}
           </Fab>

@@ -52,6 +52,11 @@ export default function NavBar({
     disable,
     setDisable,
     disable2,
+    setDisable2,
+    algo,
+    setAlgo,
+    sorted,
+    setSorted,
   ] = useContext(DataContext);
   return (
     <Grid container className={classes.sliderContainer} spacing={2}>

@@ -27,6 +27,9 @@ export default function SortViz() {
     disable2,
     setDisable2,
     algo,
+    setAlgo,
+    sorted,
+    setSorted,
   ] = useContext(DataContext);
 
   const makeArray = () => {
@@ -36,6 +39,7 @@ export default function SortViz() {
 
     setArray(newArray);
     setOgArray(newArray);
+    setSorted(false);
   };
 
   useEffect(() => {
@@ -54,6 +58,7 @@ export default function SortViz() {
   const handleReset = () => {
     setRunning(false);
     setDisable2(false);
+    setSorted(false);
 
     const arrayBars = document.querySelectorAll(".bar");
 
@@ -68,6 +73,7 @@ export default function SortViz() {
   const handleReverse = () => {
     setRunning(false);
     setDisable2(false);
+    setSorted(false);
     const arrayBars = document.querySelectorAll(".bar");
     let revArray = [...array];
     revArray = revArray.sort((a, b) => {
@@ -146,10 +152,12 @@ export default function SortViz() {
       clearInterval(intervalId);
       setRunning(false);
       setDisable(false);
+      setSorted(true);
       for (let i = 0; i < arrayBars.length; i++) {
         const barStyle = arrayBars[i].style;
         barStyle.backgroundColor = "lightgreen";
       }
+
       return;
     }
     const [code, idx1, idx2, oldHeight, newHeight] = animation;

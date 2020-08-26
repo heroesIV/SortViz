@@ -12,6 +12,8 @@ export function DataProvider(props) {
   const [disable, setDisable] = useState(false);
   const [disable2, setDisable2] = useState(false);
 
+  const [sorted, setSorted] = useState(false);
+
   const [algo, setAlgo] = useState("");
 
   return (
@@ -33,6 +35,8 @@ export function DataProvider(props) {
         setDisable2,
         algo,
         setAlgo,
+        sorted,
+        setSorted,
       ]}
     >
       {props.children}

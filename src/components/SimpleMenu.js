@@ -24,6 +24,8 @@ export default function SimpleMenu() {
     setDisable2,
     algo,
     setAlgo,
+    sorted,
+    setSorted,
   ] = useContext(DataContext);
 
   const handleClick = (event) => {
@@ -53,6 +55,7 @@ export default function SimpleMenu() {
         onClick={handleClick}
         style={{ marginTop: "10px" }}
         color="primary"
+        disabled={sorted}
       >
         {algo ? algo : "Select Algo"}
       </Button>
