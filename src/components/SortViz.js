@@ -45,7 +45,6 @@ export default function SortViz() {
 
     for (let i = 0; i < arrayBars.length; i++) {
       const barStyle = arrayBars[i].style;
-      barStyle.height = `${ogArray[i]}px`;
       barStyle.backgroundColor = primary.main;
     }
   };
