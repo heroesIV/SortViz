@@ -29,8 +29,17 @@ export default function SortViz() {
     algo,
   ] = useContext(DataContext);
 
+  const makeArray = () => {
+    const newArray = Array.from(Array(length), () =>
+      Math.floor(Math.random() * 350)
+    );
+
+    setArray(newArray);
+    setOgArray(newArray);
+  };
+
   useEffect(() => {
-    handleReset();
+    makeArray();
   }, [length]);
 
   const { primary, secondary } = theme.palette;

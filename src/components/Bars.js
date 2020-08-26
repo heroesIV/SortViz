@@ -52,23 +52,25 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Bars() {
-  const [length, setLength, array, setArray, ogArray, setOgArray] = useContext(
-    DataContext
-  );
+  const [
+    length,
+    setLength,
+    array,
+    setArray,
+    ogArray,
+    setOgArray,
+    speed,
+    setSpeed,
+    running,
+    setRunning,
+    disable,
+    setDisable,
+    disable2,
+    setDisable2,
+    algo,
+    setAlgo,
+  ] = useContext(DataContext);
   const classes = useStyles();
-
-  const makeArray = () => {
-    const newArray = Array.from(Array(length), () =>
-      Math.floor(Math.random() * 350)
-    );
-
-    setArray(newArray);
-    setOgArray(newArray);
-  };
-
-  useEffect(() => {
-    makeArray();
-  }, [length]);
 
   return (
     <Grid container className={classes.sliderContainer} spacing={2}>
