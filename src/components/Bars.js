@@ -26,6 +26,11 @@ const useStyles = makeStyles((theme) => ({
     maxHeight: "100%",
     overflow: "auto",
   },
+  paperStyle1: {
+    padding: theme.spacing(2),
+    height: "360px",
+    overflow: "auto",
+  },
   barsContainer: {
     display: "flex",
     flexDirection: "row",
@@ -45,9 +50,10 @@ const useStyles = makeStyles((theme) => ({
   infoContainer: {
     // height: "360px",
     padding: theme.spacing(1),
+    // margin: "auto",
   },
   info: {
-    height: "360px",
+    // height: "340px",
     // margin: theme.spacing(1),
   },
 }));
@@ -94,7 +100,7 @@ export default function Bars() {
         </Paper>
       </Grid>
       <Grid item xs={12} sm={6}>
-        <Paper className={classes.paperStyle}>
+        <Paper className={classes.paperStyle1}>
           <Grid container className={classes.infoContainer} spacing={2}>
             <Typography className={classes.info}>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione
