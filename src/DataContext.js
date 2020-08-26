@@ -12,6 +12,8 @@ export function DataProvider(props) {
   const [disable, setDisable] = useState(false);
   const [disable2, setDisable2] = useState(false);
 
+  const [algo, setAlgo] = useState("");
+
   return (
     <DataContext.Provider
       value={[
@@ -29,6 +31,8 @@ export function DataProvider(props) {
         setDisable,
         disable2,
         setDisable2,
+        algo,
+        setAlgo,
       ]}
     >
       {props.children}

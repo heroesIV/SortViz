@@ -2,13 +2,15 @@ import { Slider, Button, Typography, Grid, Paper } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { DataContext } from "../DataContext";
 import React, { useContext } from "react";
+import SimpleMenu from "./SimpleMenu";
 
 const useStyles = makeStyles((theme) => ({
   buttonStyles: {
-    margin: "10px",
+    marginBottom: "10px",
   },
   sliderContainer: {
     padding: theme.spacing(1),
+    paddingBottom: 0,
     margin: "auto",
     textAlign: "center",
     fontWeight: "500",
@@ -24,6 +26,7 @@ const useStyles = makeStyles((theme) => ({
   paperStyle: {
     padding: theme.spacing(2),
   },
+  algoPaper: {},
 }));
 
 export default function NavBar({
@@ -98,9 +101,10 @@ export default function NavBar({
           />
         </Paper>
       </Grid>
-      <Grid item xs={false} sm={6} className={classes.sliderItem}>
-        <Paper style={{ height: "100%" }}>
-          <Button
+      <Grid item xs={12} sm={6} className={classes.sliderItem}>
+        <Paper className={classes.algoPaper}>
+          <SimpleMenu styles={classes.buttonStyles} />
+          {/* <Button
             onClick={handleQuickSort}
             disabled={disable2}
             className={classes.buttonStyles}
@@ -115,8 +119,8 @@ export default function NavBar({
             color="primary"
           >
             Bubble Sort
-          </Button>
-          <Button
+          </Button> */}
+          {/* <Button
             onClick={() => {
               setRunning(!running);
             }}
@@ -125,7 +129,7 @@ export default function NavBar({
             color="primary"
           >
             {running ? "PAUSE" : "PLAY"}
-          </Button>
+          </Button> */}
           <Button
             onClick={handleReset}
             disabled={disable}
