@@ -94,7 +94,7 @@ export default function SortViz() {
   // };
 
   const handlePause = () => {
-    if (running === false) {
+    if (running === false && disable === false) {
       if (algo === "Bubble Sort") {
         handleBubbleSort();
       } else if (algo === "Quick Sort") {
@@ -107,7 +107,7 @@ export default function SortViz() {
 
   const handleBubbleSort = () => {
     setRunning(true);
-    // setDisable(true);
+    setDisable(true);
     // setDisable2(true);
 
     const [sortedArray, animations] = getBubbleSortAnimations(array);
@@ -120,7 +120,7 @@ export default function SortViz() {
 
   const handleQuickSort = () => {
     setRunning(true);
-    // setDisable(true);
+    setDisable(true);
     // setDisable2(true);
 
     // if (!runningRef.current) return;
