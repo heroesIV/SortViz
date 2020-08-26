@@ -1,6 +1,13 @@
 import React, { useContext } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import { AppBar, Toolbar, Fab, Typography, Grid } from "@material-ui/core";
+import {
+  AppBar,
+  Toolbar,
+  Fab,
+  Typography,
+  Grid,
+  Link,
+} from "@material-ui/core";
 import PlayArrowIcon from "@material-ui/icons/PlayArrow";
 import PauseIcon from "@material-ui/icons/Pause";
 import { DataContext } from "../DataContext";
@@ -72,15 +79,31 @@ export default function BottomAppbar({ handlePause }) {
           </Fab>
 
           <div className={classes.grow} />
-          <Grid container spacing={2}>
-            <Grid item xs={8} />
-            <Grid item xs={1}>
-              <GitHubIcon fontSize="small" />
+
+          <Grid
+            container
+            direction="row"
+            alignItems="center"
+            justify="flex-end"
+            spacing={1}
+          >
+            <Grid item>
+              <Link
+                href="https://github.com/heroesIV"
+                color="inherit"
+                underline="none"
+              >
+                <GitHubIcon fontSize="small" />
+              </Link>
             </Grid>
-            <Grid item xs={3}>
-              <Typography className={classes.typgraphyStyles}>
+            <Grid item>
+              <Link
+                href="https://github.com/heroesIV"
+                color="inherit"
+                underline="none"
+              >
                 heroesIV
-              </Typography>
+              </Link>
             </Grid>
           </Grid>
         </Toolbar>

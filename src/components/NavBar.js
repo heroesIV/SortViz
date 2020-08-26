@@ -6,7 +6,7 @@ import SimpleMenu from "./SimpleMenu";
 
 const useStyles = makeStyles((theme) => ({
   buttonStyles: {
-    margin: "10px 0 10px 0",
+    margin: "10px",
   },
   sliderContainer: {
     padding: theme.spacing(1),
@@ -107,13 +107,44 @@ export default function NavBar({
         </Paper>
       </Grid>
       <Grid item xs={12} sm={6} className={classes.sliderItem}>
-        <Paper className={classes.algoPaper}>
-          <Grid container direction="row" alignItems="center" justify="center">
-            <Grid item xs={6} style={{ height: "100%" }}>
-              <SimpleMenu styles={classes.buttonStyles} />
-            </Grid>
-
-            <Grid item xs={6}>
+        <Paper
+          className={classes.algoPaper}
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "center",
+          }}
+          spacing={2}
+        >
+          <Grid
+            item
+            xs={6}
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "center",
+            }}
+          >
+            <SimpleMenu styles={classes.buttonStyles} />
+          </Grid>
+          <Grid
+            item
+            xs={6}
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "center",
+            }}
+          >
+            <Grid
+              item
+              xs={5}
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "center",
+              }}
+            >
               <Button
                 onClick={handleReset}
                 disabled={disable}
@@ -122,6 +153,16 @@ export default function NavBar({
               >
                 Reset
               </Button>
+            </Grid>
+            <Grid
+              item
+              xs={7}
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "center",
+              }}
+            >
               <Button
                 onClick={handleReverse}
                 disabled={disable}

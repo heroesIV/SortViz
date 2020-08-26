@@ -46,13 +46,13 @@ export default function SimpleMenu({ styles }) {
   // console.log()
 
   return (
-    <div>
+    <>
       <Button
         aria-controls="simple-menu"
         aria-haspopup="true"
         onClick={handleClick}
         color="primary"
-        disabled={sorted}
+        disabled={sorted || disable}
         className={styles}
       >
         {algo ? algo : "Select Algo"}
@@ -71,6 +71,6 @@ export default function SimpleMenu({ styles }) {
           Bubble Sort
         </MenuItem>
       </Menu>
-    </div>
+    </>
   );
 }
