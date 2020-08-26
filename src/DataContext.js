@@ -15,6 +15,8 @@ export function DataProvider(props) {
 
   const [algo, setAlgo] = useState("");
 
+  const [darkMode, setDarkMode] = useState(false);
+
   return (
     <DataContext.Provider
       value={[
@@ -34,6 +36,8 @@ export function DataProvider(props) {
         setAlgo,
         sorted,
         setSorted,
+        darkMode,
+        setDarkMode,
       ]}
     >
       {props.children}

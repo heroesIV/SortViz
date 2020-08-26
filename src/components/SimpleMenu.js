@@ -4,7 +4,7 @@ import Button from "@material-ui/core/Button";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 
-export default function SimpleMenu() {
+export default function SimpleMenu({ styles }) {
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const [
@@ -51,9 +51,9 @@ export default function SimpleMenu() {
         aria-controls="simple-menu"
         aria-haspopup="true"
         onClick={handleClick}
-        style={{ marginTop: "10px" }}
         color="primary"
         disabled={sorted}
+        className={styles}
       >
         {algo ? algo : "Select Algo"}
       </Button>

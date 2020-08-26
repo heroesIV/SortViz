@@ -2,14 +2,14 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
-import theme from "./Theme";
-import { ThemeProvider } from "@material-ui/core/styles";
+
+import { DataProvider } from "./DataContext";
 
 ReactDOM.render(
   <>
-    <ThemeProvider theme={theme}>
+    <DataProvider>
       <App />
-    </ThemeProvider>
+    </DataProvider>
   </>,
   document.getElementById("root")
 );

@@ -6,7 +6,7 @@ import SimpleMenu from "./SimpleMenu";
 
 const useStyles = makeStyles((theme) => ({
   buttonStyles: {
-    marginBottom: "10px",
+    margin: "10px 0 10px 0",
   },
   sliderContainer: {
     padding: theme.spacing(1),
@@ -26,7 +26,9 @@ const useStyles = makeStyles((theme) => ({
   paperStyle: {
     padding: theme.spacing(2),
   },
-  algoPaper: {},
+  algoPaper: {
+    height: "100%",
+  },
 }));
 
 export default function NavBar({
@@ -106,24 +108,30 @@ export default function NavBar({
       </Grid>
       <Grid item xs={12} sm={6} className={classes.sliderItem}>
         <Paper className={classes.algoPaper}>
-          <SimpleMenu styles={classes.buttonStyles} />
+          <Grid container direction="row" alignItems="center" justify="center">
+            <Grid item xs={6} style={{ height: "100%" }}>
+              <SimpleMenu styles={classes.buttonStyles} />
+            </Grid>
 
-          <Button
-            onClick={handleReset}
-            disabled={disable}
-            className={classes.buttonStyles}
-            color="primary"
-          >
-            Reset
-          </Button>
-          <Button
-            onClick={handleReverse}
-            disabled={disable}
-            className={classes.buttonStyles}
-            color="primary"
-          >
-            Reverse
-          </Button>
+            <Grid item xs={6}>
+              <Button
+                onClick={handleReset}
+                disabled={disable}
+                className={classes.buttonStyles}
+                color="primary"
+              >
+                Reset
+              </Button>
+              <Button
+                onClick={handleReverse}
+                disabled={disable}
+                className={classes.buttonStyles}
+                color="primary"
+              >
+                Reverse
+              </Button>
+            </Grid>
+          </Grid>
         </Paper>
       </Grid>
     </Grid>

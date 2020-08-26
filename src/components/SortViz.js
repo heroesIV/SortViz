@@ -6,7 +6,7 @@ import { getQuickSortAnimations } from "../sortingAlgorithms/QuickSort";
 import BottomAppbar from "./BottomAppbar";
 
 import NavBar from "./NavBar";
-import theme from "../Theme";
+import { lightTheme, darkTheme } from "../Theme";
 
 import { Grid } from "@material-ui/core";
 
@@ -28,7 +28,11 @@ export default function SortViz() {
     setAlgo,
     sorted,
     setSorted,
+    darkMode,
+    setDarkMode,
   ] = useContext(DataContext);
+
+  const theme = darkMode ? darkTheme : lightTheme;
 
   const makeArray = () => {
     const newArray = Array.from(Array(length), () =>

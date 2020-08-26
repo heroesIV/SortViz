@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
   },
   paperStyle1: {
     padding: theme.spacing(2),
-    height: "360px",
+    height: "100%",
     overflow: "auto",
   },
   barsContainer: {
@@ -53,7 +53,7 @@ const useStyles = makeStyles((theme) => ({
     // margin: "auto",
   },
   info: {
-    // height: "340px",
+    height: "360px",
     // margin: theme.spacing(1),
   },
 }));
@@ -112,20 +112,9 @@ export default function Bars() {
               Accusamus, explicabo, maiores commodi a ipsa voluptatem omnis
               adipisci aspernatur optio quo officiis velit repellendus neque,
               suscipit saepe veniam ex! Ullam, laboriosam. Doloremque incidunt
-              iusto facilis sapiente iure quibusdam perspiciatis sed? Accusamus
-              sed ut temporibus Lorem ipsum dolor sit amet consectetur Lorem
-              ipsum dolor sit, amet consectetur adipisicing elit. Voluptate
-              ipsam, eum, libero nostrum ab officiis illum amet sapiente
-              aspernatur eaque itaque aut ut quia, doloribus ratione. Impedit
-              minus consequatur, nam, sunt nesciunt rerum quas perspiciatis
-              maxime illum autem laudantium sequi ipsa, quia molestiae? Minus
-              iste dolor temporibus. Culpa quidem, doloremque perferendis nulla
-              amet autem sint corporis quam dolorem quos reprehenderit voluptate
-              modi nemo debitis, optio consectetur placeat voluptates ex rem?
-              Suscipit architecto quidem sed ad minus esse ipsam ipsum? Iure
-              modi architecto sed temporibus eius corrupti, suscipit quidem
-              voluptatum est neque consequuntur unde beatae odit cum numquam
-              dignissimos rem alias? adipisicing elit.
+              iusto facilis sapiente iure quibusdam perspiciatis sed?Lorem ipsum
+              dolor sit amet consectetur adipisicing elit. At fugiat iure
+              labore, consequuntur quis dolorem nemo voluptatem eius eaque in!
             </Typography>
           </Grid>
         </Paper>
