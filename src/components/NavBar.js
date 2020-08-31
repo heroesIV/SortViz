@@ -1,8 +1,9 @@
 import { Slider, Button, Typography, Grid, Paper } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { DataContext } from "../DataContext";
-import React, { useContext } from "react";
-import SimpleMenu from "./SimpleMenu";
+import React, { useContext, useState } from "react";
+
+import AlgoDialog from "./AlgoDialog";
 
 const useStyles = makeStyles((theme) => ({
   buttonStyles: {
@@ -38,8 +39,6 @@ export default function NavBar({
   handleReverse,
 }) {
   const classes = useStyles();
-  // console.log(props);
-  // console.log(handlePause);
   const [
     length,
     setLength,
@@ -58,6 +57,19 @@ export default function NavBar({
     sorted,
     setSorted,
   ] = useContext(DataContext);
+
+  const [open, setOpen] = useState(false);
+  const [selectedValue, setSelectedValue] = useState("Select Algo");
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = (value) => {
+    setOpen(false);
+    setSelectedValue(value);
+  };
+
   return (
     <Grid container className={classes.sliderContainer} spacing={2}>
       <Grid item xs={6} sm={3} className={classes.sliderItem}>
@@ -125,7 +137,22 @@ export default function NavBar({
               justifyContent: "center",
             }}
           >
-            <SimpleMenu styles={classes.buttonStyles} />
+            <Button
+              aria-controls="simple-menu"
+              aria-haspopup="true"
+              onClick={handleClickOpen}
+              color="primary"
+              disabled={sorted || disable}
+              className={classes.buttonStyles}
+            >
+              {algo ? algo : "Select Algorithm"}
+            </Button>
+            <AlgoDialog
+              selectedValue={selectedValue}
+              open={open}
+              onClose={handleClose}
+              setAlgo={setAlgo}
+            />
           </Grid>
           <Grid
             item
