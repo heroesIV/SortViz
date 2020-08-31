@@ -99,7 +99,7 @@ export default function SortViz() {
         handleBubbleSort();
       } else if (algo === "Quick Sort") {
         handleQuickSort();
-      } else alert("select algo");
+      }
     } else {
       setRunning(!running);
     }

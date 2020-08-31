@@ -102,7 +102,7 @@ export default function Bars() {
       <Grid item xs={12} sm={6}>
         <Paper className={classes.paperStyle1}>
           <Grid container className={classes.infoContainer} spacing={2}>
-            <Typography className={classes.info}>
+            <Typography className={classes.info} variant="body2">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione
               voluptates eligendi aliquam neque voluptas tempore. Aliquid omnis
               perspiciatis nesciunt quod aut pariatur, distinctio cum cumque,
