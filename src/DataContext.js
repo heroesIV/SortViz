@@ -15,7 +15,7 @@ export function DataProvider(props) {
 
   const [algo, setAlgo] = useState("");
 
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(true);
 
   return (
     <DataContext.Provider

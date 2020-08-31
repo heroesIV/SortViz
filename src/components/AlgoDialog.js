@@ -12,10 +12,10 @@ import { blue } from "@material-ui/core/colors";
 
 const algorithms = ["Quick Sort", "Bubble Sort"];
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
   avatar: {
-    backgroundColor: blue[100],
-    color: blue[600],
+    // backgroundColor: theme.palette.primary.light,
+    margin: "0 10px 0 10px",
   },
 }));
 
@@ -40,20 +40,20 @@ export default function AlgoDialog(props) {
     >
       <DialogTitle id="simple-dialog-title">Select Algorithm</DialogTitle>
       <List>
-        {algorithms.map((algorithms) => (
+        {algorithms.map((algorithm) => (
           <ListItem
             button
-            onClick={() => handleListItemClick(algorithms)}
-            key={algorithms}
+            onClick={() => handleListItemClick(algorithm)}
+            key={algorithm}
           >
             <IconButton
-              className={classes.menuButton}
-              color="inherit"
+              className={classes.avatar}
+              color="primary"
               aria-label="menu"
             >
               <SortIcon />
             </IconButton>
-            <ListItemText primary={algorithms} />
+            <ListItemText primary={algorithm} />
           </ListItem>
         ))}
       </List>
