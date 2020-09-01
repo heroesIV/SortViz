@@ -9,6 +9,7 @@ import Dialog from "@material-ui/core/Dialog";
 import SortIcon from "@material-ui/icons/Sort";
 import IconButton from "@material-ui/core/IconButton";
 import { blue } from "@material-ui/core/colors";
+import SignalCellularAltIcon from "@material-ui/icons/SignalCellularAlt";
 
 const algorithms = ["Quick Sort", "Bubble Sort"];
 
@@ -51,7 +52,7 @@ export default function AlgoDialog(props) {
               color="primary"
               aria-label="menu"
             >
-              <SortIcon />
+              <SignalCellularAltIcon />
             </IconButton>
             <ListItemText primary={algorithm} />
           </ListItem>

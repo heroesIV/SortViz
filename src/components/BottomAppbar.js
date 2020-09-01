@@ -76,7 +76,6 @@ export default function BottomAppbar({ handlePause }) {
   return (
     <>
       <Toolbar />
-
       <AppBar
         position="fixed"
         className={classes.appBar}
