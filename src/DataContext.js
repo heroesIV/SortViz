@@ -13,9 +13,11 @@ export function DataProvider(props) {
 
   const [sorted, setSorted] = useState(false);
 
-  const [algo, setAlgo] = useState("");
+  const [algo, setAlgo] = useState("Select Algorithm");
 
   const [darkMode, setDarkMode] = useState(true);
+
+  const [algoDetails, setAlgoDetails] = useState({"Select Algorithm" : {name: "Select Algorithm", info: "info"}, "Quick Sort": {name: "Quick Sort", info: "QuickSort is a Divide and Conquer algorithm. It picks an element as pivot and partitions the given array around the picked pivot. There are many different versions of quickSort that pick pivot in different ways."}, "Bubble Sort" : {name: "Bubble Sort", info: "sdsd"}})
 
   return (
     <DataContext.Provider
@@ -38,6 +40,8 @@ export function DataProvider(props) {
         setSorted,
         darkMode,
         setDarkMode,
+        algoDetails, 
+        setAlgoDetails,
       ]}
     >
       {props.children}

@@ -11,6 +11,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import { DataContext } from "../DataContext";
 import React, { useContext } from "react";
 import Brightness4Icon from "@material-ui/icons/Brightness4";
+import BrightnessHighIcon from '@material-ui/icons/BrightnessHigh';
 import IconButton from "@material-ui/core/IconButton";
 
 const useStyles = makeStyles((theme) => ({
@@ -68,7 +69,7 @@ export default function Appbar() {
               setDarkMode(!darkMode);
             }}
           >
-            <Brightness4Icon />
+            {darkMode? <BrightnessHighIcon /> : <Brightness4Icon />}
           </IconButton>
         </Toolbar>
       </AppBar>

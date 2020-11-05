@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from "react";
 import { DataContext } from "../DataContext";
 import { Grid, Paper, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+import AlgoInfo from './AlgoInfo';
 
 const useStyles = makeStyles((theme) => ({
   buttonStyles: {
@@ -100,24 +101,14 @@ export default function Bars() {
         </Paper>
       </Grid>
       <Grid item xs={12} sm={6}>
-        <Paper className={classes.paperStyle1}>
+      <AlgoInfo />
+        {/* <Paper className={classes.paperStyle1}>
           <Grid container className={classes.infoContainer} spacing={2}>
             <Typography className={classes.info} variant="body2">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione
-              voluptates eligendi aliquam neque voluptas tempore. Aliquid omnis
-              perspiciatis nesciunt quod aut pariatur, distinctio cum cumque,
-              quas accusamus dolorum ipsam libero! Lorem ipsum dolor sit amet
-              consectetur adipisicing elit. Adipisci consequatur impedit
-              accusamus cumque dolorem accusantium quisquam suscipit sit iusto.
-              Accusamus, explicabo, maiores commodi a ipsa voluptatem omnis
-              adipisci aspernatur optio quo officiis velit repellendus neque,
-              suscipit saepe veniam ex! Ullam, laboriosam. Doloremque incidunt
-              iusto facilis sapiente iure quibusdam perspiciatis sed?Lorem ipsum
-              dolor sit amet consectetur adipisicing elit. At fugiat iure
-              labore, consequuntur quis dolorem nemo voluptatem eius eaque in!
+              <AlgoInfo />
             </Typography>
           </Grid>
-        </Paper>
+        </Paper> */}
       </Grid>
     </Grid>
   );
